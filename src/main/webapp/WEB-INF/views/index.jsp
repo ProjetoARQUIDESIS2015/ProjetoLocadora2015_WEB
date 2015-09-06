@@ -1,7 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+pageEncoding="utf-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="pt">
   <head>
-    <meta charset="utf-8">
+	<spring:url value="/resources/bootstrap/css/bootstrap.css" var="mainCss" />
+	
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -12,14 +16,14 @@
     <title>CarBR</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/src/main/webapp/WEB-INF/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${mainCss}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="resources/bootstrap/js/ie-emulation-modes-warning.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -42,12 +46,12 @@
           <a class="navbar-brand" href="#">CarBR</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" method="post" action="login.do">
             <div class="form-group">
-              <input type="text" placeholder="Login" class="form-control">
+              <input type="text" placeholder="Login" class="form-control" name="nomeUsuario">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Senha" class="form-control">
+              <input type="password" placeholder="Senha" class="form-control" name="senha">
             </div>
             <button type="submit" class="btn btn-success">Entrar</button>
           </form>
@@ -95,9 +99,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />"></script>
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="resources/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
