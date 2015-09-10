@@ -10,7 +10,7 @@ pageEncoding="ISO-8859-1"%>
 <body>
  
 	<center>
-		<h2>Login ERRO!/h2>
+		<h2>Login ERRO!</h2>
 		<h3>
 			<a href="hello?name=Eric">Click Here</a>
 		</h3>

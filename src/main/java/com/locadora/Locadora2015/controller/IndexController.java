@@ -2,7 +2,6 @@ package com.locadora.Locadora2015.controller;
  
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.locadora.Locadora2015.model.Usuario;
 
  
@@ -19,7 +18,8 @@ public class IndexController{
 	
 		if (user.getNomeUsuario().equals("teste")&&user.getSenha().equals("teste")){
 			return "login";
-		}
+		} else {
 			return "errologin";
 		}
 	}
+}

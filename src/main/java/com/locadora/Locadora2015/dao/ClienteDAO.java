@@ -258,27 +258,7 @@ public class ClienteDAO {
 			}
 		
 		}
-		
-
-		
-		
+				
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
