@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import com.locadora.Locadora2015.model.Cliente;
+import com.locadora.Locadora2015.to.ClienteTO;
 
 public class ClienteDAO {
 
@@ -19,11 +19,7 @@ public class ClienteDAO {
 		public ClienteDAO() {
 		}
 
-		public void alterar(Connection conn, String bairro, String cep, String cidade, String cnh,
-				String complemento, String cpf, String dataNascimento,
-				String email, String logradouro, String nome, String num,
-				String primeiraCNH, String rg, String sexo, String telefone,String celular,
-				String uf, String ufCNH, String validadeCNH) throws SQLException{
+		public void alterar(Connection conn, ClienteTO cliente) throws SQLException{
 			  
 		
 			try
@@ -37,26 +33,26 @@ public class ClienteDAO {
     
 			  PreparedStatement  stm = conn.prepareStatement(sqlSelect);
 			  	 
-			     stm.setString(1, bairro);
-		         stm.setString(2, cep);
-		         stm.setString(3,cidade );
-		         stm.setString(4, cnh);
-		         stm.setString(5, complemento);	          
-		         stm.setString(6, cpf);
-		         stm.setString(7, dataNascimento);
-		         stm.setString(8, email);
-		         stm.setString(9, logradouro);
-		         stm.setString(10, nome);
-		         stm.setString(11, num);
-		         stm.setString(12, primeiraCNH);
-		         stm.setString(13, rg);
-		         stm.setString(14, sexo);
-		         stm.setString(15, telefone);
-		         stm.setString(16, celular);
-		         stm.setString(17, uf);
-		         stm.setString(18, ufCNH);
-		         stm.setString(19, validadeCNH);
-		         stm.setString(20, cpf);
+			     stm.setString(1, cliente.getBairro());
+		         stm.setString(2, cliente.getCep());
+		         stm.setString(3, cliente.getCidade());
+		         stm.setString(4, cliente.getCnh());
+		         stm.setString(5, cliente.getComplemento());	          
+		         stm.setString(6, cliente.getCpf());
+		         stm.setString(7, cliente.getDataNascimento());
+		         stm.setString(8, cliente.getEmail());
+		         stm.setString(9, cliente.getLogradouro());
+		         stm.setString(10, cliente.getNome());
+		         stm.setString(11, cliente.getNum());
+		         stm.setString(12, cliente.getPrimeiraCNH());
+		         stm.setString(13, cliente.getRg());
+		         stm.setString(14, cliente.getSexo());
+		         stm.setString(15, cliente.getTelefone());
+		         stm.setString(16, cliente.getCelular());
+		         stm.setString(17, cliente.getUf());
+		         stm.setString(18, cliente.getUfCNH());
+		         stm.setString(19, cliente.getValidadeCNH());
+		         stm.setString(20, cliente.getCpf());
 
 		         if (stm.executeUpdate() > 0) { 
 						JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
@@ -78,9 +74,9 @@ public class ClienteDAO {
 
 
 
-	public Cliente carregar(Connection conn, String cpf) {
+	public ClienteTO carregar(Connection conn, String cpf) {
 			
-		Cliente cliente = new Cliente();
+		ClienteTO cliente = new ClienteTO();
 	      String sqlSelect = "SELECT * from Cliente where CPF= ? ;";
 	      PreparedStatement stm = null;
 	      ResultSet rs = null;
@@ -204,11 +200,7 @@ public class ClienteDAO {
 	
 	
 	
-	public void incluir(Connection conn, String bairro, String cep, String cidade, String cnh,
-			String complemento, String cpf, String dataNascimento,
-			String email, String logradouro, String nome, String num,
-			String primeiraCNH, String rg, String sexo, String telefone,String celular,
-			String uf, String ufCNH, String validadeCNH) throws SQLException {
+	public void incluir(Connection conn, ClienteTO cliente) throws SQLException {
 		
 		try{				
 			
@@ -217,26 +209,25 @@ public class ClienteDAO {
 			
 
 			
-			stm.setString(1, cpf);
-			stm.setString(2, bairro);
-			stm.setString(3, cep);			
-			stm.setString(4, cidade);
-			stm.setString(5, cnh);
-			stm.setString(6,complemento);
-			stm.setString(7,dataNascimento );
-			stm.setString(8,email );
-			stm.setString(9,logradouro );
-			stm.setString(10,nome );
-			stm.setString(11, num);		
-			stm.setString(12,primeiraCNH );
-			stm.setString(13,rg );
-			stm.setString(14,sexo );
-			stm.setString(15,telefone );
-			stm.setString(16, celular);		
-			stm.setString(17,uf );
-			System.out.println(ufCNH);
-			stm.setString(18,ufCNH );
-			stm.setString(19, validadeCNH);		
+			stm.setString(1, cliente.getCpf());
+			stm.setString(2, cliente.getBairro());
+			stm.setString(3, cliente.getCep());			
+			stm.setString(4, cliente.getCidade());
+			stm.setString(5, cliente.getCnh());
+			stm.setString(6, cliente.getComplemento());
+			stm.setString(7, cliente.getDataNascimento());
+			stm.setString(8, cliente.getEmail());
+			stm.setString(9, cliente.getLogradouro());
+			stm.setString(10, cliente.getNome());
+			stm.setString(11, cliente.getNum());		
+			stm.setString(12, cliente.getPrimeiraCNH());
+			stm.setString(13, cliente.getRg());
+			stm.setString(14, cliente.getSexo());
+			stm.setString(15, cliente.getTelefone());
+			stm.setString(16, cliente.getCelular());		
+			stm.setString(17, cliente.getUf());
+			stm.setString(18, cliente.getUfCNH());
+			stm.setString(19, cliente.getValidadeCNH());		
 						
 			stm.executeUpdate();			
 			stm.close();
