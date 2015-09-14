@@ -43,7 +43,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.do">CarBR</a>
+          <a class="navbar-brand" href="main.do">CarBR</a>
         </div>
 		<div id="navbar" class="navbar-collapse collapse">
 				<form class="navbar-form navbar-right" method="post"

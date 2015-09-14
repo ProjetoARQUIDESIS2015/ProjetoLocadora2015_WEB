@@ -46,7 +46,7 @@ pageEncoding="ISO-8859-1"%>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                <a class="navbar-brand" href="index.do">CarBR</a>
+                <a class="navbar-brand" href="main.do">CarBR</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
@@ -116,7 +116,21 @@ pageEncoding="ISO-8859-1"%>
  <div class="container theme-showcase" role="main">
  
      <div class="page-header">
- 
+ <div class="jumbotron">
+		<div class="container">
+			<h1>Página Principal</h1>
+			<p>Aqui ainda não sabemos o que vamos colocar.</p>
+		
+		</div>
+		</div>
+		<div class="container">
+				<hr>
+
+		<footer>
+			<p>&copy; CarBR 2015</p>
+		</footer>
+	
+	</div>
  
  
  
@@ -129,6 +143,7 @@ pageEncoding="ISO-8859-1"%>
 
 
  </div> 
+
 
  
  
