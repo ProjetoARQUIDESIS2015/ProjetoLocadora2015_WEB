@@ -43,7 +43,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">CarBR</a>
+          <a class="navbar-brand" href="index.do">CarBR</a>
         </div>
 		<div id="navbar" class="navbar-collapse collapse">
 				<form class="navbar-form navbar-right" method="post"
@@ -56,30 +56,17 @@
 							<input type="password" placeholder="Senha" class="form-control"
 							name="senha">
 						
-						<div class="btn-group">
-							<button class="btn dropdown-toggle" data-toggle="dropdown">
-								Agência <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li><a href="#">São Paulo - SP</a></li>
-								<li><a href="#">Rio de Janeiro - RJ</a></li>
-								<li><a href="#">Vitória - ES</a></li>
 
-							</ul>
-						
-						<!-- /btn-group -->
-
-
-					</div>
-					<div class="form-group">
+					
 						
 					
 					<button type="submit" class="btn btn-success">Entrar</button>
+					</div>
 				</form>
 				
 				</div>
 			</div>
-      </div>
+      
     </nav>
 	
 	<!-- Main jumbotron for a primary marketing message or call to action -->
@@ -144,9 +131,9 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type='text/javascript'
-		src="/resources/js/jquery.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 	<script type='text/javascript'
-		src="/resources/js/bootstrap.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
 </body>

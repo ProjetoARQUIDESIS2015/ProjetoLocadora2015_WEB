@@ -110,13 +110,26 @@ pageEncoding="ISO-8859-1"%>
             <!-- /.navbar-collapse -->
             </div>
             </div>
-        </nav>
-      
+        </nav>      
  
  <div class="container theme-showcase" role="main">
  
      <div class="page-header">
- 
+ <div class="jumbotron">
+		<div class="container">
+			<h1>Relatório Diário</h1>
+			<p>Aqui você pode visualizar todas as transações efetuadas durante o dia.</p>
+		
+		</div>
+		</div>
+		<div class="container">
+				<hr>
+
+		<footer>
+			<p>&copy; CarBR 2015</p>
+		</footer>
+	
+	</div>
  
  
  
@@ -143,4 +156,4 @@ pageEncoding="ISO-8859-1"%>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="${pageContext.request.contextPath}/resources/js/ie10-viewport-bug-workaround.js"></script>
  </body>
- </html>           
+ </html>  
