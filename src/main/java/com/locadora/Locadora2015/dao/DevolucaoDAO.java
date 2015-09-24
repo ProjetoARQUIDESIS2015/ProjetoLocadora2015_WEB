@@ -6,27 +6,22 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-
-public class EmprestimoDAO {
+public class DevolucaoDAO {
 	
 	
-	
-	public void salvar(Connection conn, String dataHora,String previsao, double tipoTarifa,String cpfCli,double valor,String placaAut) throws SQLException {
-	int a=0;
-		try{				
+	public void salvar(Connection conn, String dataDevolucao,double acrescimo, int agenciaDevolução,double kmDevolucao) throws SQLException {
+	try{				
 			
-			String sqlSelect ="INSERT INTO emprestimo (dataHora, previsao,tipoTarifa,cpfCli,valor,placaAut, statusAut) values (?,?,?, ?, ?, ?,?);";
+			String sqlSelect ="INSERT INTO devolucao (dataDevolucao, acrescimo, agenciaDevolucao, kmDevolucao) values (?,?,?, ?, );";
 			
 			PreparedStatement stm  = conn.prepareStatement(sqlSelect);
 		
 			
-			stm.setString(1, dataHora);
-			stm.setString(2, previsao);			
-			stm.setDouble(3, tipoTarifa);
-			stm.setString(4, cpfCli);
-			stm.setDouble(5, valor);
-			stm.setString(6, placaAut);
-			stm.setInt(7, a);
+			stm.setString(1, dataDevolucao);
+			stm.setDouble(2, acrescimo);		
+			stm.setInt(3, agenciaDevolução);
+			stm.setDouble(4, kmDevolucao);
+
 						
 			stm.executeUpdate();			
 			stm.close();
@@ -52,10 +47,4 @@ public class EmprestimoDAO {
 		
 	
 	}
-	
-	
-	
-	
-	
-
 }

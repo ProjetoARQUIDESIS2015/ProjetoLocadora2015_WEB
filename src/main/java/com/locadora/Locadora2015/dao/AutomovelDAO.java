@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import com.locadora.Locadora2015.model.Automovel;
+import com.locadora.Locadora2015.to.AutomovelTO;
 
 public class AutomovelDAO {
 
@@ -15,8 +15,7 @@ public class AutomovelDAO {
 	
 	ModeloDAO modDao = new ModeloDAO();
 	
-	/*public void incluir(Connection conn, String agencia, String ano, String chassi, 
-			String estado, double km, String placa, String status) throws SQLException {
+	public void incluir(Connection conn, AutomovelTO automovel) throws SQLException {
 	
 		try{				
 			
@@ -24,13 +23,13 @@ public class AutomovelDAO {
 			
 			PreparedStatement stm  = conn.prepareStatement(sqlSelect);
 		
-			stm.setString(1, agencia);
-			stm.setString(2, ano);
-			stm.setString(3, chassi);			
-			stm.setString(4, estado);
-			stm.setDouble(5, km);
-			stm.setString(6, placa);
-			stm.setString(7,status);
+			stm.setString(1, automovel.getAgencia());
+			stm.setString(2, automovel.getAno());
+			stm.setString(3, automovel.getChassi());			
+			stm.setString(4, automovel.getEstado());
+			stm.setDouble(5, automovel.getKm());
+			stm.setString(6, automovel.getPlaca());
+			stm.setString(7, automovel.getStatus());
 	
 						
 			stm.executeUpdate();			
@@ -55,10 +54,10 @@ public class AutomovelDAO {
 		}
 		
 	
-	}*/
-	public Automovel carregar(Connection conn, String placa) {
+	}
+	public AutomovelTO carregar(Connection conn, String placa) {
 		
-		  Automovel automovel = new Automovel();
+		  AutomovelTO automovel = new AutomovelTO();
 	      String sqlSelect = "SELECT * from automovel where placa= ? ;";
 	      PreparedStatement stm = null;
 	      ResultSet rs = null;
@@ -165,8 +164,7 @@ public class AutomovelDAO {
 }
 
 	
-	public void alterar(Connection conn,String agencia, String ano, String chassi, 
-			String estado, double km, String placa) throws SQLException{
+	public void alterar(Connection conn, AutomovelTO automovel) throws SQLException{
 		  
 	
 		try
@@ -177,12 +175,12 @@ public class AutomovelDAO {
 
 		  PreparedStatement  stm = conn.prepareStatement(sqlSelect);
 		  	 
-		     stm.setString(1, agencia);
-	         stm.setString(2, ano);
-	         stm.setString(3, chassi);
-	         stm.setString(4, estado);
-	         stm.setDouble(5, km);
-	         stm.setString(6, placa);	          
+		     stm.setString(1, automovel.getAgencia());
+	         stm.setString(2, automovel.getAno());
+	         stm.setString(3, automovel.getChassi());
+	         stm.setString(4, automovel.getEstado());
+	         stm.setDouble(5, automovel.getKm());
+	         stm.setString(6, automovel.getPlaca());	          
 	
 	  
 	
@@ -261,9 +259,9 @@ public class AutomovelDAO {
 	
 	
 	
-	public Automovel aleatorio(Connection conn, int codmod) {
+	public AutomovelTO aleatorio(Connection conn, int codmod) {
 		
-		  Automovel automovel = new Automovel();
+		  AutomovelTO automovel = new AutomovelTO();
 	      String sqlSelect = "SELECT * from automovel where statusAut=1 and codmod=? limit 1;";
 	      PreparedStatement stm = null;
 	      ResultSet rs = null;

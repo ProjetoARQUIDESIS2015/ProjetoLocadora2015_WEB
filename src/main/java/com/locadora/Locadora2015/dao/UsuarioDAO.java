@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 import com.locadora.Locadora2015.model.Usuario;
+import com.locadora.Locadora2015.to.UsuarioTO;
 
 public class UsuarioDAO {
 
@@ -19,7 +20,7 @@ public class UsuarioDAO {
 		public UsuarioDAO() {
 		}
 
-		public void alterar(Connection conn, int idUsuario, String nomeUsuario, String senha, char permissao) throws SQLException{
+		public void alterar(Connection conn, UsuarioTO usuarioTO) throws SQLException{
 			  
 		
 			try
@@ -33,10 +34,10 @@ public class UsuarioDAO {
 			 
 			  PreparedStatement  stm = conn.prepareStatement(sqlSelect);
 			  	 
-			     stm.setString(1, nomeUsuario);
-		         stm.setString(2, senha);
-		         stm.setString(3, Character.toString(permissao));
-		         stm.setInt(4, idUsuario);
+			     stm.setString(1, usuario.getNomeUsuario());
+		         stm.setString(2, usuario.getSenha());
+		         stm.setString(3, usuario.getCharacter.toString(permissao));
+		         stm.setInt(4, usuario.getidUsuario());
 		         
 		         if (stm.executeUpdate() > 0) { 
 						JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
@@ -58,9 +59,9 @@ public class UsuarioDAO {
 
 
 
-	public Usuario carregar(Connection conn, int idUsuario) {
+	public UsuarioTO carregar(Connection conn, int idUsuario) {
 			
-		  Usuario usuario = new Usuario();
+		  UsuarioTO usuario = new UsuarioTO();
 	      String sqlSelect = "SELECT * from Usuario where idUsuário= ? ;";
 	      PreparedStatement stm = null;
 	      ResultSet rs = null;
@@ -162,7 +163,7 @@ public class UsuarioDAO {
 	
 	
 	
-	public void incluir(Connection conn, int idUsuario, String nomeUsuario, String senha, char permissao) throws SQLException {
+	public void incluir(Connection conn, UsuarioTO usuarioTO) throws SQLException {
 		
 		try{				
 			
@@ -171,7 +172,7 @@ public class UsuarioDAO {
 			
 
 			
-			stm.setInt(1, idUsuario);
+			stm.setInt(1, user.getIdUsuario());
 			stm.setString(2, nomeUsuario);
 			stm.setString(3, senha);			
 			stm.setString(4, Character.toString(permissao));

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import com.locadora.Locadora2015.model.Modelo;
+import com.locadora.Locadora2015.to.ModeloTO;
 
 public class ModeloDAO {
 
@@ -16,30 +16,21 @@ public class ModeloDAO {
 	public boolean modeloInexistente = false;
 	
 	
-/*	public void alterar(Connection conn, int codigo, String descricao, String fabricante,
-			String grupo, String modelo, double tarifaKmControlado,
-			double tarifaKmLivre) throws SQLException{
+	public void alterar(Connection conn, ModeloTO modelo) throws SQLException{
 		  
-		dao.AcessoBD bd = new dao.AcessoBD();
-		
 
 	
 		try
 	      {
-		  String sqlSelect = "UPDATE MODELO SET  descricao=?, fabricante=?, grupo=?,modelo=?,tarifaControlado=?, tarifaLivre=? where codigo=?";"
-		
-		  	
-	      
-	      	
+		  String sqlSelect = "UPDATE MODELO SET  descricao=?, fabricante=?, grupo=?,modelo=?,tarifaControlado=?, tarifaLivre=? where codigo=?";
+    	
 		  PreparedStatement  stm = conn.prepareStatement(sqlSelect);
 		  	 
-		     stm.setString(1, descricao);
-	         stm.setString(2, fabricante);
-	         stm.setString(3, grupo);
-	         stm.setString(4, modelo);
-	         stm.setString(5, tarifaKmControlado);	          
-	         stm.setString(6, tarifaKmLivre);
-             stm.setString(7, codigo);
+		     stm.setString(1, modelo.getDescricao());
+	         stm.setString(2, modelo.getFabricante());
+	         stm.setString(3, modelo.getGrupo());
+	         stm.setString(4, modelo.getModelo());
+	   
 	     
 
 	         if (stm.executeUpdate() > 0) { 
@@ -60,12 +51,10 @@ public class ModeloDAO {
 			}	   
 		}	
 
-	*/
 	
 	
-	public void incluir(Connection conn, int codigo, String descricao, String fabricante,
-			String grupo, String modelo, double tarifaKmControlado,
-			double tarifaKmLivre) throws SQLException {
+	
+	public void incluir(Connection conn, ModeloTO modelo) throws SQLException {
 	
 		try{				
 			
@@ -73,13 +62,13 @@ public class ModeloDAO {
 			
 			PreparedStatement stm  = conn.prepareStatement(sqlSelect);
 		
-			stm.setInt(1, codigo);
-			stm.setString(2, descricao);
-			stm.setString(3, fabricante);			
-			stm.setString(4, grupo);
-			stm.setString(5, modelo);
-			stm.setDouble(6, tarifaKmControlado);
-			stm.setDouble(7,tarifaKmLivre );
+			stm.setInt(1, modelo.getCodigo());
+			stm.setString(2, modelo.getDescricao());
+			stm.setString(3, modelo.getFabricante());			
+			stm.setString(4, modelo.getGrupo());
+			stm.setString(5, modelo.getModelo());
+			stm.setDouble(6, modelo.getTarifaKmControlado());
+			stm.setDouble(7, modelo.getTarifaKmLivre());
 	
 						
 			stm.executeUpdate();			
@@ -106,9 +95,9 @@ public class ModeloDAO {
 	
 	}
 	
-	public Modelo carregar(Connection conn, int codigo) {
+	public ModeloTO carregar(Connection conn, int codigo) {
 		
-		  Modelo modelo = new Modelo();
+		  ModeloTO modelo = new ModeloTO();
 	      String sqlSelect = "SELECT * from modelo where codigo= ? ;";
 	      
 	      PreparedStatement stm = null;
@@ -380,7 +369,7 @@ finally
 	
 	public int carregarCod(Connection conn, String modelo) {
 		int cod=0;
-		  Modelo m = new Modelo();
+		  ModeloTO m = new ModeloTO();
 	      String sqlSelect = "SELECT codigo from modelo where modelo= ? ;";
 	      PreparedStatement stm = null;
 	      ResultSet rs = null;

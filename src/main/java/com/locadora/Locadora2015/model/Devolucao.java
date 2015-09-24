@@ -1,52 +1,34 @@
 package com.locadora.Locadora2015.model;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.locadora.Locadora2015.dao.DevolucaoDAO;
+import com.locadora.Locadora2015.dao.AcessoBD;
+
+
 public class Devolucao {
-	private double acrescimo;
-	private int agenciaDevolução;
-	private String dataDevolucao;
-	private double kmDevolucao;
+	
+	public Connection conn = null;
 
-	public Devolucao(double acrescimo, int agenciaDevolução,
-			String dataDevolucao, double kmDevolucao) {
-		setAcrescimo(acrescimo);
-		setAgenciaDevolução(agenciaDevolução);
-		setDataDevolucao(dataDevolucao);
-		setKmDevolucao(kmDevolucao);
-	}
-
-	public void devolver() {
+	
+	public void consultarDevolucoesDiarias() {
 
 	}
 
-	public double getAcrescimo() {
-		return acrescimo;
-	}
+	public void salvar(String dataDevolucao,double acrescimo, int agenciaDevolução,double kmDevolucao) throws SQLException {
+				
+			Devolucao obj = new Devolucao();	
+			AcessoBD bd = new AcessoBD();
+			conn = bd.obtemConexao();
+			conn.setAutoCommit(false);
+			
+			obj.salvar(conn,dataDevolucao,acrescimo, agenciaDevolução, kmDevolucao);	
+			
+			conn.commit();
+			
+	
 
-	public int getAgenciaDevolução() {
-		return agenciaDevolução;
 	}
-
-	public String getDataDevolucao() {
-		return dataDevolucao;
-	}
-
-	public double getKmDevolucao() {
-		return kmDevolucao;
-	}
-
-	public void setAcrescimo(double acrescimo) {
-		this.acrescimo = acrescimo;
-	}
-
-	public void setAgenciaDevolução(int agenciaDevolução) {
-		this.agenciaDevolução = agenciaDevolução;
-	}
-
-	public void setDataDevolucao(String dataDevolucao) {
-		this.dataDevolucao = dataDevolucao;
-	}
-
-	public void setKmDevolucao(double kmDevolucao) {
-		this.kmDevolucao = kmDevolucao;
-	}
+	
 }

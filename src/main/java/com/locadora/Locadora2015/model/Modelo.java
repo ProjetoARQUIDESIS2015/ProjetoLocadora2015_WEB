@@ -5,40 +5,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import com.locadora.Locadora2015.dao.AcessoBD;
 import com.locadora.Locadora2015.dao.ModeloDAO;
+import com.locadora.Locadora2015.to.ModeloTO;
 
 
 public class Modelo {
-	private int codigo;
-	private String descricao;
-	private String fabricante;
-	private String grupo;
-	private String modelo;
-	private double tarifaKmControlado;
-	private double tarifaKmLivre;
+	
 	public Connection conn = null;
 
 	public Modelo() {
 		
 	}
 	
-	public Modelo(int codigo, String descricao, String fabricante,
-			String grupo, String modelo, double tarifaKmControlado,
-			double tarifaKmLivre) {
-		
-		setCodigo(codigo);
-		setDescricao(descricao);
-		setFabricante(fabricante);
-		setGrupo(grupo);
-		setModelo(modelo);
-		setTarifaKmControlado(tarifaKmControlado);
-		setTarifaKmLivre(tarifaKmLivre);
-		
-		
-	}
 
-	public void alterar(int codigo, String descricao, String fabricante,
-			String grupo, String modelo, double tarifaKmControlado,
-			double tarifaKmLivre) throws SQLException {
+	public void alterar(ModeloTO modeloTO) throws SQLException {
 		
 		AcessoBD bd = new AcessoBD();
 		ModeloDAO modDAO = new ModeloDAO();
@@ -54,12 +33,13 @@ public class Modelo {
 	}
 	
 	
-	public Modelo consultar(int codigo) throws SQLException {
+	public ModeloTO consultar(int codigo) throws SQLException {
 		AcessoBD bd = new AcessoBD();
 		ModeloDAO modelo = new ModeloDAO();
 		conn = bd.obtemConexao();
 		conn.setAutoCommit(false);
-	
+		
+		
 		return modelo.carregar(conn,codigo);
 		
 	}
@@ -87,9 +67,7 @@ public class Modelo {
 		
 	}
 
-	public void incluir(int codigo, String descricao, String fabricante,
-			String grupo, String modelo, double tarifaKmControlado,
-			double tarifaKmLivre) throws SQLException {
+	public void incluir(ModeloTO modeloTO) throws SQLException {
 			
 		ModeloDAO objmod = new ModeloDAO();	
 		AcessoBD bd = new AcessoBD();
@@ -127,60 +105,5 @@ public class Modelo {
 	}
 	
 	
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public String getFabricante() {
-		return fabricante;
-	}
-
-	public String getGrupo() {
-		return grupo;
-	}
-
-	public String getModelo() {
-		return modelo;
-	}
-
-	public double getTarifaKmControlado() {
-		return tarifaKmControlado;
-	}
-
-	public double getTarifaKmLivre() {
-		return tarifaKmLivre;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public void setFabricante(String fabricante) {
-		this.fabricante = fabricante;
-	}
-
-	public void setGrupo(String grupo) {
-		this.grupo = grupo;
-	}
-
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-
-	public void setTarifaKmControlado(double tarifaKmControlado) {
-		this.tarifaKmControlado = tarifaKmControlado;
-	}
-
-	public void setTarifaKmLivre(double tarifaKmLivre) {
-		this.tarifaKmLivre = tarifaKmLivre;
-	}
 
 }

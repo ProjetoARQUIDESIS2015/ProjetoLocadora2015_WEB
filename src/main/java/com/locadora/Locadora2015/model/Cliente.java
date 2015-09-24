@@ -17,10 +17,8 @@ public class Cliente {
 	
 		
 	}
-
-
-
-public void incluir(ClienteTO clienteTO) throws SQLException {
+	
+	public void incluir(ClienteTO clienteTO) throws SQLException {
 		
 		ClienteDAO cliente = new ClienteDAO();
 		AcessoBD bd = new AcessoBD();
@@ -39,11 +37,9 @@ public void incluir(ClienteTO clienteTO) throws SQLException {
 		AcessoBD bd = new AcessoBD();
 		ClienteDAO cliDAO = new ClienteDAO();
 	
-	
 		conn = bd.obtemConexao();
 		conn.setAutoCommit(false);
 		
-	
 		cliDAO.alterar(conn, clienteTO);
 		conn.commit();
 		
@@ -52,6 +48,7 @@ public void incluir(ClienteTO clienteTO) throws SQLException {
 	public ClienteTO consultar(String cpf) throws SQLException {
 		AcessoBD bd = new AcessoBD();
 		ClienteDAO cliente = new ClienteDAO();
+		
 		conn = bd.obtemConexao();
 		conn.setAutoCommit(false);
 		
@@ -66,8 +63,10 @@ public void incluir(ClienteTO clienteTO) throws SQLException {
 	public void excluir(String cpf) throws SQLException {
 		AcessoBD bd = new AcessoBD();
 		ClienteDAO cliente = new ClienteDAO();
+		
 		conn =  bd.obtemConexao();
 		conn.setAutoCommit(false);
+		
 		cliente.excluir(conn,cpf);
 		conn.commit();
       

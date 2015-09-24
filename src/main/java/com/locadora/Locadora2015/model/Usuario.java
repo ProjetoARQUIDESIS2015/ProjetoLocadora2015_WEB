@@ -5,34 +5,20 @@ import java.sql.SQLException;
 
 import com.locadora.Locadora2015.dao.AcessoBD;
 import com.locadora.Locadora2015.dao.UsuarioDAO;
+import com.locadora.Locadora2015.to.UsuarioTO;
 
 public class Usuario {
-	private String nomeUsuario;
-	private char permissao;
-	private String senha;
-	private int idUsuario;
+	
 	public Connection conn = null;
 
-	public Usuario(String nomeUsuario, String senha, char permissao) {
-		setNomeUsuario(nomeUsuario);
-		setSenha(senha);
-		setPermissao(permissao);
+	public Usuario () {
+	
 	}
-	public Usuario (String nomeUsuario, String senha){
-		setNomeUsuario(nomeUsuario);
-		setSenha(senha);
-		setPermissao('0');
-	}
-	public Usuario (){
-		setNomeUsuario(null);
-		setSenha(null);
-		setPermissao('0');
-	}
-
+	
 	public void efetuarLogin(int idUsuario, String senha) {
 		
 	}
-	public void incluir(int idUsuario, String nomeUsuario, String senha, char permissao) throws SQLException {
+	public void incluir(UsuarioTO usuarioTO) throws SQLException {
 			
 			UsuarioDAO user = new UsuarioDAO();
 			AcessoBD bd = new AcessoBD();
@@ -40,13 +26,13 @@ public class Usuario {
 			
 			conn.setAutoCommit(false);
 			
-			user.incluir(conn, idUsuario, nomeUsuario, senha, permissao);
+			user.incluir(conn, usuarioTO);
 			conn.commit();
 			 
 
 		}
 		
-		public void alterar(int idUsuario, String nomeUsuario, String senha, char permissao) throws SQLException {
+		public void alterar(UsuarioTO usuarioTO) throws SQLException {
 			
 			AcessoBD bd = new AcessoBD();
 			UsuarioDAO user = new UsuarioDAO();
@@ -56,14 +42,15 @@ public class Usuario {
 			conn.setAutoCommit(false);
 			
 		
-			user.alterar(conn, idUsuario, nomeUsuario, senha, permissao);
+			user.alterar(conn, usuarioTO);
 			conn.commit();
 			
 		}
 
-		public Usuario consultar(int idUsuario) throws SQLException {
+		public UsuarioTO consultar(int idUsuario) throws SQLException {
 			AcessoBD bd = new AcessoBD();
 			UsuarioDAO user = new UsuarioDAO();
+			
 			conn = bd.obtemConexao();
 			conn.setAutoCommit(false);
 			
@@ -78,40 +65,14 @@ public class Usuario {
 		public void excluir(int idUsuario) throws SQLException {
 			AcessoBD bd = new AcessoBD();
 			UsuarioDAO user = new UsuarioDAO();
+			
 			conn =  bd.obtemConexao();
 			conn.setAutoCommit(false);
+			
 			user.excluir(conn,idUsuario);
 			conn.commit();
 	      
 		}
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
-
-	public char getPermissao() {
-		return permissao;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-
-	public void setPermissao(char permissao) {
-		this.permissao = permissao;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
+	
 }
