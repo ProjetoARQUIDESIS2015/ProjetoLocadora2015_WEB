@@ -6,10 +6,11 @@ public class UsuarioTO {
 	private String senha;
 	private int idUsuario;
 
-	public UsuarioTO(String nomeUsuario, String senha, char permissao) {
+	public UsuarioTO(String nomeUsuario, String senha, char permissao, int idUsuario) {
 		setNomeUsuario(nomeUsuario);
 		setSenha(senha);
 		setPermissao(permissao);
+		setIdUsuario(idUsuario);
 	}
 	
 	public UsuarioTO(){
@@ -49,6 +50,8 @@ public class UsuarioTO {
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
+
+	
 	
 	
 

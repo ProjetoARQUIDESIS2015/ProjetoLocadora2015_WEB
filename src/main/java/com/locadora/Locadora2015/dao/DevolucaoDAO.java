@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import com.locadora.Locadora2015.to.DevolucaoTO;
+
 public class DevolucaoDAO {
 	
 	
@@ -46,5 +48,10 @@ public class DevolucaoDAO {
 		}
 		
 	
+	}
+
+	public void salvar(Connection conn, DevolucaoTO devolucaoTO) {
+	
+		
 	}
 }

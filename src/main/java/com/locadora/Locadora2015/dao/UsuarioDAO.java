@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import com.locadora.Locadora2015.model.Usuario;
 import com.locadora.Locadora2015.to.UsuarioTO;
 
 public class UsuarioDAO {
@@ -20,7 +19,7 @@ public class UsuarioDAO {
 		public UsuarioDAO() {
 		}
 
-		public void alterar(Connection conn, UsuarioTO usuarioTO) throws SQLException{
+		public void alterar(Connection conn, UsuarioTO usuario) throws SQLException{
 			  
 		
 			try
@@ -36,8 +35,8 @@ public class UsuarioDAO {
 			  	 
 			     stm.setString(1, usuario.getNomeUsuario());
 		         stm.setString(2, usuario.getSenha());
-		         stm.setString(3, usuario.getCharacter.toString(permissao));
-		         stm.setInt(4, usuario.getidUsuario());
+		         stm.setLong(3, usuario.getPermissao());
+		         stm.setInt(4, usuario.getIdUsuario());
 		         
 		         if (stm.executeUpdate() > 0) { 
 						JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
@@ -163,7 +162,7 @@ public class UsuarioDAO {
 	
 	
 	
-	public void incluir(Connection conn, UsuarioTO usuarioTO) throws SQLException {
+	public void incluir(Connection conn, UsuarioTO usuario) throws SQLException {
 		
 		try{				
 			
@@ -172,10 +171,10 @@ public class UsuarioDAO {
 			
 
 			
-			stm.setInt(1, user.getIdUsuario());
-			stm.setString(2, nomeUsuario);
-			stm.setString(3, senha);			
-			stm.setString(4, Character.toString(permissao));
+			stm.setInt(1, usuario.getIdUsuario());
+			stm.setString(2, usuario.getNomeUsuario());
+			stm.setString(3, usuario.getSenha());			
+			stm.setLong(4, usuario.getPermissao());
 						
 			stm.executeUpdate();			
 			stm.close();

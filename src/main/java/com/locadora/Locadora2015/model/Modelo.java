@@ -27,7 +27,7 @@ public class Modelo {
 		conn.setAutoCommit(false);
 		
 	
-		modDAO.alterar(conn,codigo, descricao, fabricante, grupo, modelo, tarifaKmControlado, tarifaKmLivre);
+		modDAO.alterar(conn,modeloTO);
 		conn.commit();
 		
 	}
@@ -74,7 +74,7 @@ public class Modelo {
 		conn = bd.obtemConexao();
 		conn.setAutoCommit(false);
 		
-		objmod.incluir(conn,codigo,descricao,fabricante,grupo,modelo,tarifaKmControlado,tarifaKmLivre);	
+		objmod.incluir(conn,modeloTO);	
 		
 		conn.commit();
 		

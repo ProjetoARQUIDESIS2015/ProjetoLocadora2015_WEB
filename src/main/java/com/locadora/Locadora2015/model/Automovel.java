@@ -3,9 +3,8 @@ package com.locadora.Locadora2015.model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import com.locadora.Locadora2015.dao.AutomovelDAO;
-import com.locadora.Locadora2015.dao.ClienteDAO;
 import com.locadora.Locadora2015.to.AutomovelTO;
-import com.locadora.Locadora2015.to.ClienteTO;
+import com.locadora.Locadora2015.to.ModeloTO;
 import com.mysql.jdbc.Connection;
 import com.locadora.Locadora2015.dao.AcessoBD;
 
@@ -24,9 +23,9 @@ public class Automovel extends Modelo {
 			//int p;
 			AutomovelDAO automovel = new AutomovelDAO();
 			AcessoBD bd = new AcessoBD();
-			conn = bd.obtemConexao();
+			conn = (Connection) bd.obtemConexao();
 			
-			Modelo mod = new Modelo();
+			//Modelo mod = new Modelo();
 			conn.setAutoCommit(false);
 			
 			automovel.incluir(conn, automovelTO);
@@ -36,10 +35,10 @@ public class Automovel extends Modelo {
 		}
 		
 
-	public Automovel consultar(String placa) throws SQLException {
+	public AutomovelTO consultar(String placa) throws SQLException {
 		AcessoBD bd = new AcessoBD();
 		AutomovelDAO automovel = new AutomovelDAO();
-		conn = bd.obtemConexao();
+		conn = (Connection) bd.obtemConexao();
 		conn.setAutoCommit(false);
 		
 		conn.commit();
@@ -53,7 +52,7 @@ public class Automovel extends Modelo {
 		AcessoBD bd = new AcessoBD();
 		AutomovelDAO automovel = new AutomovelDAO();
 		
-		conn =  bd.obtemConexao();
+		conn =  (Connection) bd.obtemConexao();
 		conn.setAutoCommit(false);
 		
 		automovel.excluir(conn, placa);
@@ -66,7 +65,7 @@ public class Automovel extends Modelo {
 		AcessoBD bd = new AcessoBD();
 		AutomovelDAO autDAO = new AutomovelDAO();
 		
-		conn = bd.obtemConexao();
+		conn = (Connection) bd.obtemConexao();
 		conn.setAutoCommit(false);
 		
 		autDAO.alterar(conn, automovelTO);
@@ -83,10 +82,10 @@ public class Automovel extends Modelo {
 		
 	}
 	
-	public Modelo consultarMod(String modelo) throws SQLException {
+	public ModeloTO consultarMod(String modelo) throws SQLException {
 		AcessoBD bd = new AcessoBD();
 		Modelo objMod = new Modelo();
-		conn = bd.obtemConexao();
+		conn = (Connection) bd.obtemConexao();
 		conn.setAutoCommit(false);	
 		conn.commit();
 		
@@ -97,11 +96,11 @@ public class Automovel extends Modelo {
 		
 	}
 
-	public Automovel aleatorio(String modelo) throws SQLException {
+	public AutomovelTO aleatorio(String modelo) throws SQLException {
 		AcessoBD bd = new AcessoBD();
 		Modelo objMod = new Modelo();
 		AutomovelDAO objAut = new AutomovelDAO();
-		conn = bd.obtemConexao();
+		conn = (Connection) bd.obtemConexao();
 		conn.setAutoCommit(false);
 		
 		conn.commit();
